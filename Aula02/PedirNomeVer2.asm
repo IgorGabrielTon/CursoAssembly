@@ -1,11 +1,11 @@
 segment .data
-    Write           equ     0x4
-    Read            equ     0x3
+    Write           equ     0x4     ; (Constante Write recebe 4) Que é o código do escreva em assembly
+    Read            equ     0x3     ; (Constante Read recebe 3) Que é o código do leia em assembly
     ConsoleWrite    equ     0x1
     ConsoleRead     equ     0x0
     PularLinha      equ     0xA
     FimDoTexto      equ     0xD
-    ExecutarApp     equ     0x80
+    ExecutarCMD     equ     0x80
     SairApp         equ     0x1
     SemErros        equ     0x0
     LimiteChar      equ     0x80
@@ -29,23 +29,23 @@ _start:
     MOV EBX, ConsoleWrite
     MOV ECX, header
     MOV EDX, Tamanho
-    INT ExecutarApp
+    INT ExecutarCMD
     
     ; Lê o nome digitado
     MOV EAX, Read
     MOV EBX, ConsoleRead
     MOV ECX, Nome
     MOV EDX, LimiteChar
-    INT ExecutarApp    
+    INT ExecutarCMD    
     
     ;Escreve o nome na tela
     MOV EAX, Write
     MOV EBX, ConsoleWrite
     MOV ECX, Nome
     MOV EDX, LimiteChar
-    INT ExecutarApp  
+    INT ExecutarCMD  
     
     ; Finaliza o App
     MOV EAX, SairApp
     MOV EBX, SemErros
-    INT ExecutarApp
+    INT ExecutarCMD
