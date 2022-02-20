@@ -21,7 +21,7 @@ section .bss
     
     
 section .text
-    global _start:
+    global _start
 
 _start:
     ; Apresenta as msg no inicio do app
